@@ -1,0 +1,5 @@
+maxhealth=120
+maxstamina=100
+unlockedguns=True,True,True,False,False
+lastlevel=lvl3
+levelprogress=2
