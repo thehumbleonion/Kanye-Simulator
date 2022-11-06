@@ -1,5 +1,5 @@
 maxhealth=150
 maxstamina=100
 unlockedguns=True,True,True,True,True
-lastlevel=lvl5
+lastlevel=SampleScene
 levelprogress=5
