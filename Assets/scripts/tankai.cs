@@ -15,6 +15,7 @@ public class tankai : MonoBehaviour
     public GameObject rocketgun;
     public GameObject turret;
     public float turretspeed;
+    public Vector2 turretrotaterange;
     void Start()
     {
         
@@ -43,6 +44,14 @@ public class tankai : MonoBehaviour
         lookPos.y = 0;
         rotation = Quaternion.LookRotation(lookPos);
         turret.transform.rotation = Quaternion.Slerp(turret.transform.rotation, rotation, turretspeed * Time.deltaTime);
+        if(turret.transform.localEulerAngles.y < turretrotaterange.x)
+        {
+            //turret.transform.localEulerAngles = new Vector3(0, turretrotaterange.x, 0);
+        }
+        else if (turret.transform.localEulerAngles.y > turretrotaterange.y)
+        {
+            
+        }
         GetComponent<enemyweapon>().shooting = true;
         turret.GetComponent<enemyweapon>().shooting = true;
         //movement stuff
