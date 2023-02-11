@@ -303,7 +303,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91e0a395e1835d44ebed3e5a8f24d9a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  volspeed: 0.1
+  volspeed: 0.07
   intensity: 0
   maxintensity: 770
   lowerspeed: 10
@@ -327,6 +327,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 48c81c489f806b74c99445de650d0206, type: 3}
   - {fileID: 8300000, guid: e7663bae7f91bf041850915739ee48fa, type: 3}
   - {fileID: 8300000, guid: 33f08d44009084940aa7b0e3c78f60d7, type: 3}
+  - {fileID: 8300000, guid: 369fcffebb52f9e4fb5960db5f69fded, type: 3}
+  - {fileID: 8300000, guid: 2f08d7d47b953fe49a6d07e7262aa8f5, type: 3}
   midlevels:
   - {fileID: 0}
   - {fileID: 8300000, guid: 1497702a185becb40930438b2c7b11d6, type: 3}
@@ -336,6 +338,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 426668bbaca80b94f8ea32eab73a75f8, type: 3}
   - {fileID: 8300000, guid: 7491486ef455ad54d868551f9f087ca8, type: 3}
   - {fileID: 8300000, guid: 7a68cd2cafc20674dbcc8d136ffd49ee, type: 3}
+  - {fileID: 8300000, guid: 44674b15b77fa4542aed8be48c4e9ad3, type: 3}
+  - {fileID: 0}
   highlevels:
   - {fileID: 0}
   - {fileID: 8300000, guid: 09358c1d2559a0b438ddd7f1473ff583, type: 3}
@@ -345,6 +349,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 2cf982d2b7e34274cbe7351988301fb4, type: 3}
   - {fileID: 8300000, guid: 863aa683396644f4aabba3d9ace5eb44, type: 3}
   - {fileID: 8300000, guid: 84681c39fecbe3f45bf753e4dc32d7c2, type: 3}
+  - {fileID: 8300000, guid: 522d2808fbc47864ea1ea92443f5a10b, type: 3}
+  - {fileID: 0}
   transitioning: 0
   lastid: 0
 --- !u!1 &1000298042121686144

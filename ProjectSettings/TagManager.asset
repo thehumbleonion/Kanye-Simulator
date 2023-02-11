@@ -11,6 +11,7 @@ TagManager:
   - jet
   - SASMISSILE
   - sas
+  - wave
   layers:
   - Default
   - TransparentFX

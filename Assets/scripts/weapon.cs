@@ -5,10 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class weapon : MonoBehaviour
 {
+    public bool ricoche;
     public GameObject projectile;
     public Transform tip;
     public LayerMask layermask;
-    public Transform cam;
     public string ammotype;
     public float speedmult;
     public float timebeforeshot;
@@ -26,7 +26,6 @@ public class weapon : MonoBehaviour
     public Animator anim;
     public bool scopable;
     public GameObject scopesprite;
-    public GameObject guncam;
     public GameObject ui;
     public float camforwardoffset = 0.6f;
     public AudioSource audio;
@@ -53,21 +52,6 @@ public class weapon : MonoBehaviour
         if (!menu.balls)
         {
             audio.volume = startvol* PlayerPrefs.GetFloat("sfvolume", 1);
-            if (scopable)
-            {
-                if (Input.GetKey(KeyCode.Mouse1))
-                {
-                    cam.GetComponent<cameracontroller>().scoped = true;
-                    scopesprite.SetActive(true);
-                    guncam.SetActive(false);
-                }
-                else
-                {
-                    cam.GetComponent<cameracontroller>().scoped = false;
-                    scopesprite.SetActive(false);
-                    guncam.SetActive(true);
-                }
-            }
             else
             {
                 try { cam.GetComponent<cameracontroller>().scoped = false; } catch { }
@@ -119,6 +103,7 @@ public class weapon : MonoBehaviour
             GameObject proj = Instantiate(projectile, spawnpoint.position + (spawnpoint.transform.forward*camforwardoffset), rot);
             proj.GetComponent<Rigidbody>().velocity = proj.transform.forward * speed;
             proj.GetComponent<projectile>().damage = damage;
+            proj.GetComponent<projectile>().playerprojectile = true;
             proj.layer = 11;
             proj.GetComponent<projectile>().weapon = this.gameObject;
             if (!tiprotate)

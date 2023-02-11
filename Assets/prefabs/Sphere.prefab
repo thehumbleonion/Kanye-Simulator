@@ -235,7 +235,7 @@ SphereCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5321032961776839459}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: e8c44eced9f0ec6458306cf693775734, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -251,7 +251,7 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -289,6 +289,9 @@ MonoBehaviour:
   dontdestroy: 0
   rightclickdestroy: 0
   weapon: {fileID: 0}
+  continuousforce: 0
+  forcestrength: 0
+  ricoche: 0
 --- !u!65 &4763563058577210755
 BoxCollider:
   m_ObjectHideFlags: 0

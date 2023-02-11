@@ -24,6 +24,10 @@ public class projectile : MonoBehaviour
     public GameObject weapon;
     public bool continuousforce;
     public float forcestrength;
+    public bool playerprojectile;
+    float ricochecount;
+    float startingvel = 1.0f;
+    public TrailRenderer trail;
     // Start is called before the first frame update
     GameObject music;
     private void Start()
@@ -40,17 +44,31 @@ public class projectile : MonoBehaviour
             if (other.GetComponent<health>() != null)
             {
                 if(other.GetComponent<health>().hitprefab != null) Instantiate(other.GetComponent<health>().hitprefab, transform.position,transform.rotation);
-                other.GetComponent<health>().hp -= damage;
+                if (startingvel > 2)other.GetComponent<health>().hp -= damage * (rb.velocity.magnitude/startingvel);
+                else other.GetComponent<health>().hp -= damage;
+                int i = 0;
+                foreach(GradientAlphaKey key in trail.colorGradient.alphaKeys)
+                {
+                    trail.colorGradient.alphaKeys[i].alpha = (rb.velocity.magnitude / startingvel);
+                    i++;
+                }
                 GameObject.FindGameObjectWithTag("music").GetComponent<musicmanager>().intensity += damage;
             }
-            hit = true;
+            if (!playerprojectile) hit = true;
+            Invoke("destroy", timealive);
+            ricochecount++;
         }
     }
+    bool firstframe = true;
     void Update()
     {
         if (continuousforce)
         {
-            rb.velocity = transform.forward * forcestrength;
+            rb.velocity = (transform.forward * forcestrength) * Mathf.Pow(0.8f, (ricochecount + 1));
+            if (firstframe)
+            {
+                startingvel = rb.velocity.magnitude;
+            }
         }
         if (Input.GetKeyDown(KeyCode.Mouse1) && rightclickdestroy && weapon.activeSelf)
         {
@@ -66,10 +84,6 @@ public class projectile : MonoBehaviour
                 if (Physics.Raycast(transform.position, transform.forward, out rhit, raycastdis))
                 {
                     balls(rhit.collider);
-                }
-                if (hit)
-                {
-                    Invoke("destroy", timealive);
                 }
             }
             else if (GetComponent<explosive>() == null)
@@ -95,6 +109,7 @@ public class projectile : MonoBehaviour
             }
             transform.position = Vector3.Lerp(transform.position, followed.transform.position, speed);
         }
+        firstframe = false;
     }
     void destroy()
     {

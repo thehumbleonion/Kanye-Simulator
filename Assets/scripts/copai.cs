@@ -22,6 +22,7 @@ public class copai : MonoBehaviour
     void Start()
     {
         StartCoroutine(interrupt());
+        player = GameObject.FindGameObjectWithTag("Player");
     }
     IEnumerator interrupt()
     {

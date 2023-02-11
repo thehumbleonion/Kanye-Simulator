@@ -18,7 +18,7 @@ public class tankai : MonoBehaviour
     public Vector2 turretrotaterange;
     void Start()
     {
-        
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     // Update is called once per frame

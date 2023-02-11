@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 public class movement : MonoBehaviour
 {
 	public GameObject dead;
+	public Animator anim;
 	public Mesh mesh;
 	public GameObject exaustbar;
 	public Text slidertext;
@@ -233,7 +234,10 @@ public class movement : MonoBehaviour
 		if (lstam > stamina) ; else if(canregen) stamina += staminaregenrate * Time.deltaTime;
 
 		lastgrounded = controller.isGrounded;
-
+		anim.SetFloat("vel x", transform.InverseTransformDirection(moveDirection).x/8);
+		anim.SetFloat("vel z", transform.InverseTransformDirection(moveDirection).z/8);
+        if (controllergrounded) anim.SetBool("in air", false); else anim.SetBool("in air", true);
+		if (sliding) anim.SetBool("sliding", true); else anim.SetBool("sliding", false);
 	}
 	private void OnDrawGizmos()
 	{
